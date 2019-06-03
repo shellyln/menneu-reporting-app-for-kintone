@@ -11,7 +11,7 @@ HTML and [LSX](https://github.com/shellyln/liyad#what-is-lsx) that including
 # 📢 tl;dr
 * You can build the **reporting app** by setting your **kintone** environment following the instructions below.
 * We do not provide the **app template** ZIP files.
-* Report definition can be written in Markdown or LSX.
+* Report definition can be written in Markdown or [LSX](https://github.com/shellyln/liyad#what-is-lsx).
   * LSX is JSX alternative notation written in Lisp.
 
 
@@ -40,7 +40,7 @@ Edit a report definition
 
 ## 📑📊 ReportingApp (帳票テンプレート App)
 
-Create a report definition that written in Markdown or LSX with [Ace](https://ace.c9.io/) editor.  
+Create a report definition that written in Markdown or [LSX](https://github.com/shellyln/liyad#what-is-lsx) with [Ace](https://ace.c9.io/) editor.  
 You can create a report definition while viewing the preview.
 
 ### JS and CSS
@@ -279,7 +279,7 @@ https://kintone-sol.cybozu.co.jp/apps/073-ryohi.html (🚃 旅費精算申請 Ap
 * [menneu.min.js](https://shellyln.github.io/releases/menneu/0.1.0/menneu.min.js)
   * **Please do not register the above URL directly. It is not a CDN URL.**
 * app-buttons.js
-  * Please edit this file to displaying defined reports buttons.
+  * Please edit this file to show the button of the defined report.
     * `eXnhAMYWrBVFMczJ__REPORT_APP_ID`: ReportingApp's app id.
     * `eXnhAMYWrBVFMczJ__REPORT_BUTTONS`: Report definition record ids you want to use in this app.
 * kintone-report-buttons.js
