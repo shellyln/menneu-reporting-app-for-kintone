@@ -1,0 +1,6 @@
+/* https://developer.kintone.io/hc/en-us/articles/360008175233-Embed-Code-Editors */
+
+.ace_editor {
+    z-index: 0;
+    width: 80vw;
+}
