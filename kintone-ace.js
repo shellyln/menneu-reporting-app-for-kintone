@@ -1,4 +1,8 @@
+// Original source:
 // https://developer.kintone.io/hc/en-us/articles/360008175233-Embed-Code-Editors
+
+// Copyright (c) 2019 Original source authors, Shellyl_N
+// https://github.com/shellyln
 
 (() => {
     const TARGET_FIELDS = [{
