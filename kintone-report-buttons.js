@@ -52,6 +52,19 @@
         return { reportRecord, cf };
     };
 
+    const openReport = (resultUrl) => {
+        const ua = navigator.userAgent.toLowerCase(),
+            isIOS = /iphone|ipod|ipad/.test(ua),
+            isChrome = /crios/.test(ua);
+
+        if (isIOS && !isChrome) {
+            // iOS Safari or WebView (except Google Chrome)
+            window.location = resultUrl;
+        } else {
+            window.open(resultUrl, '_blank');
+        }
+    };
+
     const detailEventHandler = (event, eventName) => {
         const runReport = reportId => async () => {
             try {
@@ -71,7 +84,7 @@
                     resp.record,
                     cf,
                 );
-                window.open(resultUrl, '_blank');
+                openReport(resultUrl);
             } catch (err) {
                 console.log(err);
                 window.alert(err.message || err);
@@ -124,7 +137,7 @@
                     resp.records,
                     cf,
                 );
-                window.open(resultUrl, '_blank');
+                openReport(resultUrl);
             } catch (err) {
                 console.log(err);
                 window.alert(err.message || err);
