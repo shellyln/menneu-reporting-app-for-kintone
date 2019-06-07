@@ -52,14 +52,18 @@
         return { reportRecord, cf };
     };
 
-    kintone.events.on('app.record.detail.show', (event) => {
+    const detailEventHandler = (event, eventName) => {
         const runReport = reportId => async () => {
             try {
                 const { reportRecord, cf } = await getReportDef(reportId);
     
-                const recordId = kintone.app.record.getId();
+                const recordId = (eventName === 'mobile.app.record.detail.show' ?
+                    kintone.mobile.app.record.getId :
+                    kintone.app.record.getId)();
                 const resp = await kintone.api(kintone.api.url('/k/v1/record', true), 'GET', {
-                    app: kintone.app.getId(),
+                    app: (eventName === 'mobile.app.record.detail.show' ?
+                        kintone.mobile.app.getId :
+                        kintone.app.getId)(),
                     id: recordId,
                 });
                 const resultUrl = await start(
@@ -70,7 +74,7 @@
                 window.open(resultUrl, '_blank');
             } catch (err) {
                 console.log(err);
-                window.alert(err);
+                window.alert(err.message || err);
             }
         };
 
@@ -94,19 +98,25 @@
                 buttonEl.className = 'kintoneplugin-button-dialog-ok';
                 buttonEl.innerText = reportRecord.record.report_name.value;
                 buttonEl.onclick = runReport(report.id);
-                kintone.app.record.getHeaderMenuSpaceElement().appendChild(buttonEl);
+                (eventName === 'mobile.app.record.detail.show' ?
+                    kintone.mobile.app.getHeaderSpaceElement :
+                    kintone.app.record.getHeaderMenuSpaceElement)().appendChild(buttonEl);
             }
         })();
-    });
+    };
 
-    kintone.events.on('app.record.index.show', (event) => {
+    const listEventHandler = (event, eventName) => {
         const runReport = reportId => async () => {
             try {
                 const { reportRecord, cf } = await getReportDef(reportId);
     
-                const condition = kintone.app.getQueryCondition();
+                const condition = (eventName === 'mobile.app.record.index.show' ?
+                    kintone.mobile.app.getQueryCondition :
+                    kintone.app.getQueryCondition)();
                 const resp =  await kintone.api(kintone.api.url('/k/v1/records', true), 'GET', {
-                    app: kintone.app.getId(),
+                    app: (eventName === 'mobile.app.record.index.show' ?
+                        kintone.mobile.app.getId :
+                        kintone.app.getId)(),
                     query: condition,
                 });
                 const resultUrl = await start(
@@ -117,7 +127,7 @@
                 window.open(resultUrl, '_blank');
             } catch (err) {
                 console.log(err);
-                window.alert(err);
+                window.alert(err.message || err);
             }
         };
 
@@ -141,8 +151,26 @@
                 buttonEl.className = 'kintoneplugin-button-dialog-ok';
                 buttonEl.innerText = reportRecord.record.report_name.value;
                 buttonEl.onclick = runReport(report.id);
-                kintone.app.getHeaderMenuSpaceElement().appendChild(buttonEl);
+                (eventName === 'mobile.app.record.index.show' ?
+                    kintone.mobile.app.getHeaderSpaceElement :
+                    kintone.app.getHeaderMenuSpaceElement)().appendChild(buttonEl);
             }
         })();
+    };
+
+    kintone.events.on('app.record.detail.show', (event) => {
+        return detailEventHandler(event, 'app.record.detail.show');
+    });
+
+    kintone.events.on('mobile.app.record.detail.show', (event) => {
+        return detailEventHandler(event, 'mobile.app.record.detail.show');
+    });
+
+    kintone.events.on('app.record.index.show', (event) => {
+        return listEventHandler(event, 'app.record.index.show');
+    });
+
+    kintone.events.on('mobile.app.record.index.show', (event) => {
+        return listEventHandler(event, 'mobile.app.record.index.show');
     });
 })();
