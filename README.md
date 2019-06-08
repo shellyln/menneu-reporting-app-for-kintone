@@ -15,6 +15,15 @@ HTML and [LSX](https://github.com/shellyln/liyad#what-is-lsx) that including
   * LSX is JSX alternative notation written in Lisp.
 
 
+# 📍 Features
+* Report definition written in Markdown or [LSX](https://github.com/shellyln/liyad#what-is-lsx)
+* Report preview on design time
+  * Fetching data for preview from the other apps.
+* QR code and barcodes (See [Ménneu Playground](https://shellyln.github.io/menneu/playground.html) > `Demo (Markdown)`)
+* UML diagrams (Plant UML) (See [Ménneu Playground](https://shellyln.github.io/menneu/playground.html) > `Demo (Markdown)`)
+* Charts (Chart.js) (See [Ménneu Playground](https://shellyln.github.io/menneu/playground.html) > `Table and chart (Markdown)`)
+
+
 # 🖼 Gallery
 ## Reporting App - Edit view
 Edit a report definition
@@ -44,7 +53,7 @@ Create a report definition that written in Markdown or [LSX](https://github.com/
 You can create a report definition while viewing the preview.
 
 ### JS and CSS
-#### JS
+#### JS (PC, Mobile)
 * https://unpkg.com/react@16/umd/react.production.min.js
 * https://unpkg.com/react-dom@16/umd/react-dom.production.min.js
 * [menneu.min.js](https://shellyln.github.io/releases/menneu/0.1.0/menneu.min.js)
@@ -273,7 +282,7 @@ Customize the following application example.
 https://kintone-sol.cybozu.co.jp/apps/073-ryohi.html (🚃 旅費精算申請 App; Travel Expense Reimbursement App)
 
 ### JS and CSS
-#### JS
+#### JS (PC)
 * https://unpkg.com/react@16/umd/react.production.min.js
 * https://unpkg.com/react-dom@16/umd/react-dom.production.min.js
 * [menneu.min.js](https://shellyln.github.io/releases/menneu/0.1.0/menneu.min.js)
