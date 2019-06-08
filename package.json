@@ -1,0 +1,30 @@
+{
+  "private": true,
+  "name": "menneu-reporting-app-for-kintone",
+  "version": "0.1.0",
+  "description": "Create ✨beautiful✨ 📑📊reports📈📰 easily with Ménneu + kintone.",
+  "keywords": [
+    "kintone",
+    "reporting",
+    "Ménneu",
+    "Liyad",
+    "Lisp",
+    "LSX",
+    "Markdown",
+    "markdown-it"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shellyln/menneu-reporting-app-for-kintone.git"
+  },
+  "author": "shellyln",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/shellyln/menneu-reporting-app-for-kintone/issues"
+  },
+  "homepage": "https://shellyln.github.io/"
+}
