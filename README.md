@@ -24,6 +24,10 @@ HTML and [LSX](https://github.com/shellyln/liyad#what-is-lsx) that including
 * Charts (Chart.js) (See [Ménneu Playground](https://shellyln.github.io/menneu/playground.html) > `Table and chart (Markdown)`)
 
 
+# 💎 Example
+* [Kanban board](https://github.com/shellyln/kanban-board-for-kintone)
+
+
 # 🖼 Gallery
 ## Reporting App - Edit view
 Edit a report definition
