@@ -63,11 +63,13 @@ You can create a report definition while viewing the preview.
 * [menneu.min.js](https://shellyln.github.io/releases/menneu/0.1.0/menneu.min.js)
   * **Please do not register the above URL directly. It is not a CDN URL.**
 * https://js.kintone.com/ace/v1.4.1/ace.js
-* kintone-ace.js
-* report-def-preview.js
+* [kintone-ace.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/reporting-app/kintone-ace.js)
+* [report-def-preview.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/reporting-app/report-def-preview.js)
 
 #### CSS
 * [51-modern-default.css](https://github.com/kintone/plugin-examples/blob/master/stylesheet/51-modern-default.css)
+  * **Please do not register the above URL directly. It is not a CDN URL.**
+* [kintone-ace.css](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/reporting-app/kintone-ace.css)
   * **Please do not register the above URL directly. It is not a CDN URL.**
 
 
@@ -291,11 +293,13 @@ https://kintone-sol.cybozu.co.jp/apps/073-ryohi.html (🚃 旅費精算申請 Ap
 * https://unpkg.com/react-dom@16/umd/react-dom.production.min.js
 * [menneu.min.js](https://shellyln.github.io/releases/menneu/0.1.0/menneu.min.js)
   * **Please do not register the above URL directly. It is not a CDN URL.**
-* app-buttons.js
+* [app-buttons.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/user-app/app-buttons.js)
+  * **Please do not register the above URL directly. It is not a CDN URL.**
   * Please edit this file to show the button of the defined report.
     * `eXnhAMYWrBVFMczJ__REPORT_APP_ID`: ReportingApp's app id.
     * `eXnhAMYWrBVFMczJ__REPORT_BUTTONS`: Report definition record ids you want to use in this app.
-* kintone-report-buttons.js
+* [kintone-report-buttons.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/user-app/kintone-report-buttons.js)
+  * **Please do not register the above URL directly. It is not a CDN URL.**
 
 #### CSS
 * [51-modern-default.css](https://github.com/kintone/plugin-examples/blob/master/stylesheet/51-modern-default.css)
