@@ -64,7 +64,9 @@ You can create a report definition while viewing the preview.
   * **Please do not register the above URL directly. It is not a CDN URL.**
 * https://js.kintone.com/ace/v1.4.1/ace.js
 * [kintone-ace.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/reporting-app/kintone-ace.js)
+  * **Please do not register the above URL directly. It is not a CDN URL.**
 * [report-def-preview.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/reporting-app/report-def-preview.js)
+  * **Please do not register the above URL directly. It is not a CDN URL.**
 
 #### CSS
 * [51-modern-default.css](https://github.com/kintone/plugin-examples/blob/master/stylesheet/51-modern-default.css)
