@@ -128,8 +128,9 @@
                 if (report.embed) {
                     const divEl = document.createElement('div');
                     divEl.id = buttonId;
-                    divEl.innerHTML = await renderReport(report.id);
                     appendElToHeaderSpace(eventName, true, divEl);
+                    const root = divEl.attachShadow({mode: 'open'});
+                    root.innerHTML = await renderReport(report.id);
                 } else {
                     const buttonEl = document.createElement('button');
                     buttonEl.id = buttonId;
@@ -191,8 +192,9 @@
                 if (report.embed) {
                     const divEl = document.createElement('div');
                     divEl.id = buttonId;
-                    divEl.innerHTML = await renderReport(report.id);
                     appendElToHeaderSpace(eventName, true, divEl);
+                    const root = divEl.attachShadow({mode: 'open'});
+                    root.innerHTML = await renderReport(report.id);
                 } else {
                     const buttonEl = document.createElement('button');
                     buttonEl.id = buttonId;
