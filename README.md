@@ -110,7 +110,7 @@ You can create a report definition while viewing the preview.
 
 ![reportingapp-fields](images/reportingapp-fields-cf.png)
 
-### Report definitions
+### Example report definitions
 
 Create the following records:
 
