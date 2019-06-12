@@ -69,11 +69,13 @@
         }
     };
 
-    const appendElToHeaderSpace = (eventName, el) => {
+    const appendElToHeaderSpace = (eventName, embed, el) => {
         (eventName.startsWith('mobile.') ?
             kintone.mobile.app.getHeaderSpaceElement :
             eventName.indexOf('.index.') >= 0 ?
-                kintone.app.getHeaderMenuSpaceElement :
+                (embed ?
+                    kintone.app.getHeaderSpaceElement :
+                    kintone.app.getHeaderMenuSpaceElement) :
                 kintone.app.record.getHeaderMenuSpaceElement)().appendChild(el);
     }
 
@@ -127,14 +129,14 @@
                     const divEl = document.createElement('div');
                     divEl.id = buttonId;
                     divEl.innerHTML = await renderReport(report.id);
-                    appendElToHeaderSpace(eventName, divEl);
+                    appendElToHeaderSpace(eventName, true, divEl);
                 } else {
                     const buttonEl = document.createElement('button');
                     buttonEl.id = buttonId;
                     buttonEl.className = 'kintoneplugin-button-dialog-ok';
                     buttonEl.innerText = reportRecord.record.report_name.value;
                     buttonEl.onclick = runReport(report.id);
-                    appendElToHeaderSpace(eventName, buttonEl);
+                    appendElToHeaderSpace(eventName, false, buttonEl);
                 }
             }
         })();
@@ -190,14 +192,14 @@
                     const divEl = document.createElement('div');
                     divEl.id = buttonId;
                     divEl.innerHTML = await renderReport(report.id);
-                    appendElToHeaderSpace(eventName, divEl);
+                    appendElToHeaderSpace(eventName, true, divEl);
                 } else {
                     const buttonEl = document.createElement('button');
                     buttonEl.id = buttonId;
                     buttonEl.className = 'kintoneplugin-button-dialog-ok';
                     buttonEl.innerText = reportRecord.record.report_name.value;
                     buttonEl.onclick = runReport(report.id);
-                    appendElToHeaderSpace(eventName, buttonEl);
+                    appendElToHeaderSpace(eventName, false, buttonEl);
                 }
             }
         })();
