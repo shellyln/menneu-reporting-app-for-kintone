@@ -23,6 +23,10 @@
         }
 
         const buf = await menneu.render(source, data || {}, opts);
+        return buf;
+    };
+
+    const generateUrl = (buf) => {
         const resultUrl = URL.createObjectURL(new Blob([buf.toString()], { type: 'text/html' }));
 
         // schedule revoking the Blob URL.
@@ -65,25 +69,38 @@
         }
     };
 
+    const appendElToHeaderSpace = (eventName, el) => {
+        (eventName.startsWith('mobile.') ?
+            kintone.mobile.app.getHeaderSpaceElement :
+            eventName.indexOf('.index.') >= 0 ?
+                kintone.app.getHeaderMenuSpaceElement :
+                kintone.app.record.getHeaderMenuSpaceElement)().appendChild(el);
+    }
+
     const detailEventHandler = (event, eventName) => {
+        const renderReport = async (reportId) => {
+            const { reportRecord, cf } = await getReportDef(reportId);
+
+            const recordId = (eventName === 'mobile.app.record.detail.show' ?
+                kintone.mobile.app.record.getId :
+                kintone.app.record.getId)();
+            const resp = await kintone.api(kintone.api.url('/k/v1/record', true), 'GET', {
+                app: (eventName === 'mobile.app.record.detail.show' ?
+                    kintone.mobile.app.getId :
+                    kintone.app.getId)(),
+                id: recordId,
+            });
+
+            return await start(
+                reportRecord.record.report_template.value,
+                resp.record,
+                cf,
+            );
+        }
+
         const runReport = reportId => async () => {
             try {
-                const { reportRecord, cf } = await getReportDef(reportId);
-    
-                const recordId = (eventName === 'mobile.app.record.detail.show' ?
-                    kintone.mobile.app.record.getId :
-                    kintone.app.record.getId)();
-                const resp = await kintone.api(kintone.api.url('/k/v1/record', true), 'GET', {
-                    app: (eventName === 'mobile.app.record.detail.show' ?
-                        kintone.mobile.app.getId :
-                        kintone.app.getId)(),
-                    id: recordId,
-                });
-                const resultUrl = await start(
-                    reportRecord.record.report_template.value,
-                    resp.record,
-                    cf,
-                );
+                const resultUrl = generateUrl(await renderReport(reportId));
                 openReport(resultUrl);
             } catch (err) {
                 console.log(err);
@@ -106,37 +123,47 @@
                     continue;
                 }
 
-                const buttonEl = document.createElement('button');
-                buttonEl.id = buttonId;
-                buttonEl.className = 'kintoneplugin-button-dialog-ok';
-                buttonEl.innerText = reportRecord.record.report_name.value;
-                buttonEl.onclick = runReport(report.id);
-                (eventName === 'mobile.app.record.detail.show' ?
-                    kintone.mobile.app.getHeaderSpaceElement :
-                    kintone.app.record.getHeaderMenuSpaceElement)().appendChild(buttonEl);
+                if (report.embed) {
+                    const divEl = document.createElement('div');
+                    divEl.id = buttonId;
+                    divEl.innerHTML = await renderReport(report.id);
+                    appendElToHeaderSpace(eventName, divEl);
+                } else {
+                    const buttonEl = document.createElement('button');
+                    buttonEl.id = buttonId;
+                    buttonEl.className = 'kintoneplugin-button-dialog-ok';
+                    buttonEl.innerText = reportRecord.record.report_name.value;
+                    buttonEl.onclick = runReport(report.id);
+                    appendElToHeaderSpace(eventName, buttonEl);
+                }
             }
         })();
     };
 
     const listEventHandler = (event, eventName) => {
+        const renderReport = async (reportId) => {
+            const { reportRecord, cf } = await getReportDef(reportId);
+
+            const condition = (eventName === 'mobile.app.record.index.show' ?
+                kintone.mobile.app.getQueryCondition :
+                kintone.app.getQueryCondition)();
+            const resp =  await kintone.api(kintone.api.url('/k/v1/records', true), 'GET', {
+                app: (eventName === 'mobile.app.record.index.show' ?
+                    kintone.mobile.app.getId :
+                    kintone.app.getId)(),
+                query: condition,
+            });
+
+            return await start(
+                reportRecord.record.report_template.value,
+                resp.records,
+                cf,
+            );
+        }
+
         const runReport = reportId => async () => {
             try {
-                const { reportRecord, cf } = await getReportDef(reportId);
-    
-                const condition = (eventName === 'mobile.app.record.index.show' ?
-                    kintone.mobile.app.getQueryCondition :
-                    kintone.app.getQueryCondition)();
-                const resp =  await kintone.api(kintone.api.url('/k/v1/records', true), 'GET', {
-                    app: (eventName === 'mobile.app.record.index.show' ?
-                        kintone.mobile.app.getId :
-                        kintone.app.getId)(),
-                    query: condition,
-                });
-                const resultUrl = await start(
-                    reportRecord.record.report_template.value,
-                    resp.records,
-                    cf,
-                );
+                const resultUrl = generateUrl(await renderReport(reportId));
                 openReport(resultUrl);
             } catch (err) {
                 console.log(err);
@@ -159,14 +186,19 @@
                     continue;
                 }
 
-                const buttonEl = document.createElement('button');
-                buttonEl.id = buttonId;
-                buttonEl.className = 'kintoneplugin-button-dialog-ok';
-                buttonEl.innerText = reportRecord.record.report_name.value;
-                buttonEl.onclick = runReport(report.id);
-                (eventName === 'mobile.app.record.index.show' ?
-                    kintone.mobile.app.getHeaderSpaceElement :
-                    kintone.app.getHeaderMenuSpaceElement)().appendChild(buttonEl);
+                if (report.embed) {
+                    const divEl = document.createElement('div');
+                    divEl.id = buttonId;
+                    divEl.innerHTML = await renderReport(report.id);
+                    appendElToHeaderSpace(eventName, divEl);
+                } else {
+                    const buttonEl = document.createElement('button');
+                    buttonEl.id = buttonId;
+                    buttonEl.className = 'kintoneplugin-button-dialog-ok';
+                    buttonEl.innerText = reportRecord.record.report_name.value;
+                    buttonEl.onclick = runReport(report.id);
+                    appendElToHeaderSpace(eventName, buttonEl);
+                }
             }
         })();
     };
