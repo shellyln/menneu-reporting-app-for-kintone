@@ -303,6 +303,18 @@ https://kintone-sol.cybozu.co.jp/apps/073-ryohi.html (🚃 旅費精算申請 Ap
 * [kintone-report-buttons.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/user-app/kintone-report-buttons.js)
   * **Please do not register the above URL directly. It is not a CDN URL.**
 
+
+`app-buttons.js`
+```js
+/// Please change following constant values ///
+window.eXnhAMYWrBVFMczJ__REPORT_APP_ID = 2; // ReportingApp app id
+window.eXnhAMYWrBVFMczJ__REPORT_BUTTONS = [ // iterate the ReportingApp record IDs to be displayed in this app.
+    { id: 1 }, { id: 2 }, { id: 3 },
+    { id: 5, embed: true },                 // embedded report: display to list and/or detail view.
+];
+///////////////////////////////////////////////
+```
+
 #### CSS
 * [51-modern-default.css](https://github.com/kintone/plugin-examples/blob/master/stylesheet/51-modern-default.css)
   * **Please do not register the above URL directly. It is not a CDN URL.**
