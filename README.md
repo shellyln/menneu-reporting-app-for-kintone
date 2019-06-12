@@ -84,7 +84,7 @@ You can create a report definition while viewing the preview.
 |report_template|レポートテンプレート||Textarea|X|
 ||レポートテンプレート||Label||
 |report_template_ace|||BlankSpace||
-|preview_data|プレビュー用データ||Textarea||
+|preview_data|プレビュー用データ|[{}]|Textarea||
 ||プレビュー用データ||Label||
 |preview_data_appid|プレビュー用データAppId|1|Textbox||
 |preview_data_query|プレビュー用データクエリ|limit 1|Textbox||
@@ -273,6 +273,34 @@ Create the following records:
     "経費合計": {"value" : "2"},
     "精算金額": {"value" : "3"}
 }]
+```
+
+##### Configs
+
+```json
+
+```
+
+
+#### Embedded report
+
+##### Report_name
+* Embedded example
+
+##### Switches
+* Scripting, LSX, Detail, List
+
+##### Report_template (lisp LSX scripting)
+
+```lisp
+(Markdown """
+# Hello
+""")
+```
+##### Preview_data
+
+```json
+[{}]
 ```
 
 ##### Configs
