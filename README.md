@@ -38,7 +38,8 @@ Edit a report definition
 ![app-example-1](images/app-example-1.png)
 ## Example App - Report (definition is written in markdown)
 ![report-example-1](images/report-example-1.png)
-
+## Example App - Embedded report
+![images/embedded-report-1](images/embedded-report-1.png)
 
 
 # 💻 Requiments
