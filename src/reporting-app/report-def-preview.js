@@ -19,6 +19,10 @@
         }
 
         const buf = await menneu.render(source, data || {}, opts);
+        return buf;
+    };
+
+    const generateUrl = (buf) => {
         const resultUrl = URL.createObjectURL(new Blob([buf.toString()], { type: 'text/html' }));
 
         // schedule revoking the Blob URL.
@@ -54,11 +58,11 @@
                 });
                 const { reportRecord, cf } = await getReportDef(resp);
 
-                const resultUrl = await start(
+                const resultUrl = generateUrl(await start(
                     window.ace_editor_instance_report_template.getValue(),
                     window.ace_editor_instance_preview_data.getValue(),
                     cf,
-                );
+                ));
                 window.open(resultUrl, '_blank');
             } catch (err) {
                 console.log(err);
