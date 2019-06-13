@@ -339,7 +339,8 @@ https://kintone-sol.cybozu.co.jp/apps/073-ryohi.html (🚃 旅費精算申請 Ap
 window.eXnhAMYWrBVFMczJ__REPORT_APP_ID = 2; // ReportingApp app id
 window.eXnhAMYWrBVFMczJ__REPORT_BUTTONS = [ // iterate the ReportingApp record IDs to be displayed in this app.
     { id: 1 }, { id: 2 }, { id: 3 },
-    { id: 5, embed: true },                 // embedded report: display to list and/or detail view.
+    { id: 5, embed: true /*, viewIdsShow: [1234], viewIdsHide: [1234], hideInDetailView: true */ },
+                                            // embedded report: display to list and/or detail view.
 ];
 ///////////////////////////////////////////////
 ```

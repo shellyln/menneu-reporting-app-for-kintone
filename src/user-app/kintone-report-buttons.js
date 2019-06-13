@@ -112,6 +112,10 @@
 
         (async () => {
             for (const report of window.eXnhAMYWrBVFMczJ__REPORT_BUTTONS) {
+                if (report.hideInDetailView) {
+                    continue;
+                }
+
                 const buttonId = REPORT_APP_ELEMENT_ID_PREFIX + 'detail_button_' + report.id;
                 if (document.getElementById(buttonId) !== null) {
                     continue;
@@ -176,6 +180,16 @@
 
         (async () => {
             for (const report of window.eXnhAMYWrBVFMczJ__REPORT_BUTTONS) {
+                if (report.viewIdsShow) {
+                    if (! report.viewIdsShow.includes(event.viewId)) {
+                        continue;
+                    }
+                } else if (report.viewIdsHide) {
+                    if (report.viewIdsHide.includes(event.viewId)) {
+                        continue;
+                    }
+                }
+
                 const buttonId = REPORT_APP_ELEMENT_ID_PREFIX + 'index_button_' + report.id;
                 if (document.getElementById(buttonId) !== null) {
                     continue;
