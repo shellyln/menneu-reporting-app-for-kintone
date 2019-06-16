@@ -61,8 +61,7 @@ You can create a report definition while viewing the preview.
 #### JS (PC, Mobile)
 * https://unpkg.com/react@16/umd/react.production.min.js
 * https://unpkg.com/react-dom@16/umd/react-dom.production.min.js
-* [menneu.min.js](https://shellyln.github.io/releases/menneu/0.1.0/menneu.min.js)
-  * **Please do not register the above URL directly. It is not a CDN URL.**
+* https://unpkg.com/mdne@0.1.33/contents/assets/vendor/menneu-0.1.0/menneu.min.js
 * https://js.kintone.com/ace/v1.4.1/ace.js
 * [kintone-ace.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/reporting-app/kintone-ace.js)
   * **Please do not register the above URL directly. It is not a CDN URL.**
@@ -322,8 +321,7 @@ https://kintone-sol.cybozu.co.jp/apps/073-ryohi.html (🚃 旅費精算申請 Ap
 #### JS (PC)
 * https://unpkg.com/react@16/umd/react.production.min.js
 * https://unpkg.com/react-dom@16/umd/react-dom.production.min.js
-* [menneu.min.js](https://shellyln.github.io/releases/menneu/0.1.0/menneu.min.js)
-  * **Please do not register the above URL directly. It is not a CDN URL.**
+* https://unpkg.com/mdne@0.1.33/contents/assets/vendor/menneu-0.1.0/menneu.min.js
 * [app-buttons.js](https://github.com/shellyln/menneu-reporting-app-for-kintone/blob/master/src/user-app/app-buttons.js)
   * **Please do not register the above URL directly. It is not a CDN URL.**
   * Please edit this file to show the button of the defined report.
