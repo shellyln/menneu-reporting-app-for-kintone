@@ -41,7 +41,8 @@
                 reportRecord.record.switches.value.includes('LSX')) ? {} : {rawInput: true},
         );
         const cfGlobals = {
-            "$to-locale-string": (...args) => args.slice(-1)[0].toLocaleString(...(args.slice(0, -1))),
+            '$to-locale-string': (...args) => args.slice(-1)[0].toLocaleString(...(args.slice(0, -1))),
+            '$REQUEST-TOKEN': kintone.getRequestToken(),
         };
         cf.globals = Object.assign(cfGlobals, cf.globals || {});
 
